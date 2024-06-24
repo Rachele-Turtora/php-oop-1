@@ -1,7 +1,5 @@
 <?php
 
-include __DIR__ . '/Models/Movie.php';
-
 $movies = [
     [
         "name" => $bourne->getName(),
