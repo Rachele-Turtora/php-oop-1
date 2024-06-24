@@ -4,7 +4,7 @@ class Movie
 {
     private string $name;
     private int $year;
-    private string $genre;
+    private array $genres = [];
 
     public function __construct(string $_name)
     {
@@ -27,12 +27,14 @@ class Movie
 
     public function setGenre(string $_genre): void
     {
-        $this->genre = $_genre;
+        if (!in_array($_genre, $this->genres)) {
+            $this->genres[] = $_genre;
+        }
     }
 
-    public function getGenre(): string
+    public function getGenres(): array
     {
-        return $this->genre;
+        return $this->genres;
     }
 }
 
@@ -41,7 +43,8 @@ $bourne = new Movie("The Bourne Identity");
 try {
     $bourne->setYear(2002);
     $bourne->setGenre("action");
-    var_dump($bourne);
+    $bourne->setGenre("thriller");
+    var_dump($bourne->getYear(), $bourne->getGenres());
 } catch (Exception $e) {
     echo $e->getMessage();
 } catch (TypeError $e) {
@@ -52,7 +55,8 @@ $mamma_mia = new Movie("Mamma mia");
 try {
     $mamma_mia->setYear(2008);
     $mamma_mia->setGenre("comedy");
-    var_dump($mamma_mia);
+    $mamma_mia->setGenre("musical");
+    var_dump($mamma_mia->getYear(), $mamma_mia->getGenres());
 } catch (Exception $e) {
     echo $e->getMessage();
 } catch (TypeError $e) {
