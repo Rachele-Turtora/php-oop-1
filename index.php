@@ -2,23 +2,21 @@
 
 require_once __DIR__ . '/Models/Movie.php';
 
-$bourne = new Movie("The Bourne Identity");
+$movie1 = new Movie("The Bourne Identity");
 
 try {
-    $bourne->setYear(2002);
-    $bourne->setGenre("action");
-    $bourne->setGenre("thriller");
+    $movie1->setYear(2002);
+    $movie1->setGenre("action", "thriller");
 } catch (Exception $e) {
     echo $e->getMessage();
 } catch (TypeError $e) {
     echo $e->getMessage();
 }
 
-$mamma_mia = new Movie("Mamma mia");
+$movie2 = new Movie("Mamma mia");
 try {
-    $mamma_mia->setYear(2008);
-    $mamma_mia->setGenre("comedy");
-    $mamma_mia->setGenre("musical");
+    $movie2->setYear(2008);
+    $movie2->setGenre("comedy", "musical");
 } catch (Exception $e) {
     echo $e->getMessage();
 } catch (TypeError $e) {
@@ -35,26 +33,27 @@ require_once __DIR__ . '/db.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
     <title>Movies</title>
 </head>
 
 <body>
-    <ul>
-        <?php foreach ($movies as $movie) : ?>
-            <li>
-                <h2>Titolo: <?php echo $movie["name"]; ?></h2>
-                <p>Anno: <?php echo $movie["year"]; ?></p>
-                <p>Generi: </p>
-                <ul>
-                    <?php foreach ($movie["genres"] as $genre) : ?>
-                        <li>
+    <div class="container">
+        <div class="row">
+            <?php foreach ($movies as $movie) : ?>
+                <div class="card">
+                    <h2><?php echo $movie["name"]; ?></h2>
+                    <p>Anno: <?php echo $movie["year"]; ?></p>
+                    <p>Generi: </p>
+                    <?php if (count($movie["genres"])) : ?>
+                        <?php foreach ($movie["genres"] as $genre) : ?>
                             <p><?php echo $genre ?></p>
-                        </li>
-                    <?php endforeach ?>
-                </ul>
-            </li>
-        <?php endforeach ?>
-    </ul>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
 </body>
 
 </html>

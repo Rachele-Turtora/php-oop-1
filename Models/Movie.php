@@ -30,10 +30,10 @@ class Movie
         return $this->year;
     }
 
-    public function setGenre(string $_genre): void
+    public function setGenre(string ...$_genre): void   // rest operator trasforma stringa in array
     {
         if (!in_array($_genre, $this->genres)) {
-            $this->genres[] = $_genre;
+            $this->genres = [...$this->genres, ...$_genre];
         }
     }
 

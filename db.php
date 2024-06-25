@@ -2,13 +2,13 @@
 
 $movies = [
     [
-        "name" => $bourne->getName(),
-        "year" => $bourne->getYear(),
-        "genres" => $bourne->getGenres()
+        "name" => $movie1->getName(),
+        "year" => $movie1->getYear(),
+        "genres" => $movie1->getGenres()
     ],
     [
-        "name" => $mamma_mia->getName(),
-        "year" => $mamma_mia->getYear(),
-        "genres" => $mamma_mia->getGenres()
+        "name" => $movie2->getName(),
+        "year" => $movie2->getYear(),
+        "genres" => $movie2->getGenres()
     ],
 ];
