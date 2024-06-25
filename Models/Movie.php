@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/Models/Actor.php';
+require_once __DIR__ . '/Actor.php';
 class Movie
 {
     private string $name;
