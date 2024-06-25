@@ -1,10 +1,12 @@
 <?php
 
+require_once __DIR__ . '/Models/Actor.php';
 class Movie
 {
     private string $name;
     private int $year;
     private array $genres = [];
+    private Actor $actor;
 
     public function __construct(string $_name)
     {
@@ -40,5 +42,15 @@ class Movie
     public function getGenres(): array
     {
         return $this->genres;
+    }
+
+    public function setActor(Actor $_actor): void
+    {
+        $this->actor = $_actor;
+    }
+
+    public function getActor(): Actor
+    {
+        return $this->actor;
     }
 }

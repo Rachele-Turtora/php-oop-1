@@ -7,6 +7,7 @@ $movie1 = new Movie("The Bourne Identity");
 try {
     $movie1->setYear(2002);
     $movie1->setGenre("action", "thriller");
+    $movie1->setActor(new Actor("Matt", "Damon"));
 } catch (Exception $e) {
     echo $e->getMessage();
 } catch (TypeError $e) {
@@ -17,6 +18,7 @@ $movie2 = new Movie("Mamma mia");
 try {
     $movie2->setYear(2008);
     $movie2->setGenre("comedy", "musical");
+    $movie2->setActor(new Actor("Meryl", "Streep"));
 } catch (Exception $e) {
     echo $e->getMessage();
 } catch (TypeError $e) {
@@ -44,12 +46,19 @@ require_once __DIR__ . '/db.php';
                 <div class="card">
                     <h2><?php echo $movie["name"]; ?></h2>
                     <p>Anno: <?php echo $movie["year"]; ?></p>
-                    <p>Generi: </p>
-                    <?php if (count($movie["genres"])) : ?>
-                        <?php foreach ($movie["genres"] as $genre) : ?>
-                            <p><?php echo $genre ?></p>
-                        <?php endforeach ?>
-                    <?php endif ?>
+                    <div>
+                        <span>Generi: </span>
+                        <?php if (count($movie["genres"])) : ?>
+                            <?php foreach ($movie["genres"] as $genre) : ?>
+                                <span><?php echo $genre ?></span>
+                            <?php endforeach ?>
+                        <?php endif ?>
+                    </div>
+                    <div>
+                        <span>Attori: </span>
+                        <span><?php echo $movie["actor"]->getName() ?></span>
+                        <span><?php echo $movie["actor"]->getSurname() ?></span>
+                    </div>
                 </div>
             <?php endforeach ?>
         </div>
