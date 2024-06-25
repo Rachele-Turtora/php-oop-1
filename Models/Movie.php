@@ -6,16 +6,23 @@ class Movie
     private string $name;
     private int $year;
     private array $genres = [];
-    private Actor $actor;
+    private array $actors = [];
+    private static int $movie_id = 0;
 
     public function __construct(string $_name)
     {
         $this->name = $_name;
+        self::$movie_id++;
     }
 
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public static function getId(): int
+    {
+        return self::$movie_id;
     }
 
     public function setYear(int $_year): void
@@ -46,11 +53,11 @@ class Movie
 
     public function setActor(Actor $_actor): void
     {
-        $this->actor = $_actor;
+        $this->actors[] = $_actor;
     }
 
-    public function getActor(): Actor
+    public function getActors(): array
     {
-        return $this->actor;
+        return $this->actors;
     }
 }

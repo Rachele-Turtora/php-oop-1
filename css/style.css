@@ -15,10 +15,41 @@
 }
 
 .card {
-    width: calc(100% / 3 - 10px);
+    width: calc(100% / 3 - 20px);
     background-color: rgb(104, 181, 206);
     color: white;
     padding: 15px;
     border-radius: 5px;
     margin: 10px;
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border: 1px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+h2 {
+    margin-bottom: 8px;
+}
+
+.genres {
+    margin: 5px 0;
+}
+
+.total {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    background-color: rgb(79, 163, 192);
+    color: white;
+    border-radius: 3px;
 }
