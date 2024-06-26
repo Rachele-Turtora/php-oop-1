@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . '/Actor.php';
+require_once __DIR__ . '/Genre.php';
+
 class Movie
 {
     private string $name;
@@ -39,11 +41,9 @@ class Movie
         return $this->year;
     }
 
-    public function setGenre(string ...$_genre): void   // rest operator trasforma stringa in array
+    public function setGenres(array $_genres): void
     {
-        if (!in_array($_genre, $this->genres)) {
-            $this->genres = [...$this->genres, ...$_genre];
-        }
+        $this->genres = $_genres;
     }
 
     public function getGenres(): array
@@ -59,5 +59,15 @@ class Movie
     public function getActors(): array
     {
         return $this->actors;
+    }
+
+    public function getAllGenres()
+    {
+        if (count($this->genres)) {
+            $genres = array_map(fn ($genre) => $genre->getName(), $this->genres);
+            return implode(' - ', $genres);
+        } else {
+            return null;
+        }
     }
 }

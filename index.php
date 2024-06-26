@@ -6,7 +6,7 @@ $movie1 = new Movie("The Bourne Identity");
 
 try {
     $movie1->setYear(2002);
-    $movie1->setGenre("action", "thriller");
+    $movie1->setGenres([new Genre("Action"), new Genre("Thriller")]);
     $movie1->setActor(new Actor("Matt", "Damon"));
     $movie1->setActor(new Actor("Franka", "Potente"));
 } catch (Exception $e) {
@@ -18,7 +18,7 @@ try {
 $movie2 = new Movie("Mamma mia");
 try {
     $movie2->setYear(2008);
-    $movie2->setGenre("comedy", "musical");
+    $movie2->setGenres([new Genre("Musical"), new Genre("Comedy")]);
     $movie2->setActor(new Actor("Meryl", "Streep"));
     $movie2->setActor(new Actor("Amanda", "Seyfried"));
 } catch (Exception $e) {
@@ -30,7 +30,7 @@ try {
 $movie3 = new Movie("The Godfather");
 try {
     $movie3->setYear(1972);
-    $movie3->setGenre("Crime", "Drama");
+    $movie3->setGenres([new Genre("Crime"), new Genre("Drama")]);
     $movie3->setActor(new Actor("Marlon", "Brando"));
     $movie3->setActor(new Actor("Al", "Pacino"));
 } catch (Exception $e) {
@@ -67,20 +67,13 @@ require_once __DIR__ . '/db.php';
                     <p><strong>Anno: </strong><?php echo $movie["year"]; ?></p>
                     <div class="genres">
                         <span><strong>Generi: </strong></span>
-                        <?php if (count($movie["genres"])) : ?>
-                            <?php foreach ($movie["genres"] as $genre) : ?>
-                                <span><?php echo $genre ?></span>
-                                <?php if ($genre !== end($movie["genres"])) : ?>
-                                    <span> - </span>
-                                <?php endif ?>
-                            <?php endforeach ?>
-                        <?php endif ?>
+                        <span><?php echo $movie["genres"] ?></span>
                     </div>
                     <div class="actors">
                         <span><strong>Attori: </strong></span>
                         <?php foreach ($movie["actors"] as $actor) : ?>
-                            <span><?php echo $actor?->getName() ?> </span>
-                            <span><?php echo $actor?->getSurname() ?></span>
+                            <span><?php echo $actor->getName() ?> </span>
+                            <span><?php echo $actor->getSurname() ?></span>
                             <?php if ($actor !== end($movie["actors"])) : ?>
                                 <span> - </span>
                             <?php endif ?>
